@@ -1,0 +1,36 @@
+Bird vs. Worm
+
+Worm is trying to escape from Bird.
+
+Bird is trying to catch Worm.
+
+Worm is trying to reach the hole.
+
+Action plan/general idea:
+- Run simulation
+- Implement movement logic for Bird and Worm
+- Check for collision detection
+- Determine win/loss conditions
+- Track attempts, completion time.
+- Collect data for analysis
+- Feedback loop for improvements on worm's movement strategy
+- Train
+- Test and refine the model
+- Final evaluation and reporting
+
+
+# config
+global FIELD_SIZE# The field is 100x100 units
+global SAFE_ZONE_POS # Target coordinates for the worm
+#input asks for x and y seperately , then formats it
+
+global BIRD_SPEED
+global CATCH_RADIUS  # Distance at which the bird catches the worm
+global WORM_SPEED
+global STEP_TIME
+
+entity class
+-> type
+-> x, y, speed
+
+

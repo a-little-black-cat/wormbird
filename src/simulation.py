@@ -2,14 +2,6 @@ import math
 import random
 from typing import List, Dict, Union
 
-# config
-FIELD_SIZE = 100  # The field is 100x100 units
-SAFE_ZONE_POS = (90, 90)  # Target coordinates for the worm
-
-BIRD_SPEED = 2.0
-CATCH_RADIUS = 0.1  # Distance at which the bird catches the worm
-WORM_SPEED = 1.0
-STEP_TIME = 0.1  # Time passed in one simulation step (for finer control)
 
 
 class Entity:
@@ -165,6 +157,45 @@ def run_trials(num_trials: int = 100):
         print(
             f"Attempt {r['attempt_id']}: {r['outcome']} in {r['time_s']}s (Final Pos: ({r['worm_x']}, {r['worm_y']}))")
 
+def adjust_parameters():
+    # config
+    global FIELD_SIZE  # The field is 100x100 units
+    global SAFE_ZONE_POS  # Target coordinates for the worm
+    # input asks for x and y seperately , then formats it
+
+    global BIRD_SPEED
+    global CATCH_RADIUS  # Distance at which the bird catches the worm
+    global WORM_SPEED
+    global STEP_TIME  # Time passed in one simulation step (for finer control)
+
+    field_size = input("Enter field size: ")
+    FIELD_SIZE = float(field_size)
+    safe_zone_pos_x_str = input("Enter safe zone position x value: ")
+    safe_zone_pos_x = float(safe_zone_pos_x_str)
+    safe_zone_pos_y_str = input("Enter safe zone position y value: ")
+    safe_zone_pos_y = float(safe_zone_pos_y_str)
+
+    SAFE_ZONE_POS = (safe_zone_pos_x, safe_zone_pos_y)
+
+    bird_speed_str = input("Enter bird speed: ")
+    BIRD_SPEED = float(bird_speed_str)
+
+    catch_radius = input("Enter catch radius: ")
+    CATCH_RADIUS = float(catch_radius)
+
+    worm_speed_str = input("Enter worm speed: ")
+    WORM_SPEED = float(worm_speed_str)
+
+    step_time_str = input("Enter step_time: ")
+    STEP_TIME = float(step_time_str)
+
+    trial_count_str = input("Enter number of trials to run: ")
+    trial_count = int(trial_count_str)
+
+    run_trials(trial_count)
+
+
+
 
 if __name__ == "__main__":
-    run_trials(num_trials=100)
+    adjust_parameters()

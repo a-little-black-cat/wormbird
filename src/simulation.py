@@ -1,6 +1,12 @@
+import os
+from datetime import datetime
 import math
 import random
 from typing import List, Dict, Union
+from zoneinfo import ZoneInfo
+
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
 
@@ -136,6 +142,8 @@ def run_trials(num_trials: int = 100):
     for i in range(1, num_trials + 1):
         result = run_simulation(i)
         results.append(result)
+        #Extracting data into a .csv file for each trial
+
 
 
     safe_count = sum(1 for r in results if r['outcome'] == 'Safe')
@@ -156,6 +164,11 @@ def run_trials(num_trials: int = 100):
     for i, r in enumerate(results[:5]):
         print(
             f"Attempt {r['attempt_id']}: {r['outcome']} in {r['time_s']}s (Final Pos: ({r['worm_x']}, {r['worm_y']}))")
+    current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    #i = str('num_trials'+ '{current_time}')
+    df = pd.DataFrame(results)
+    df.to_csv(f"simulation_results-{num_trials}-{current_time}.csv", index=False)
+
 
 def adjust_parameters():
     # config
